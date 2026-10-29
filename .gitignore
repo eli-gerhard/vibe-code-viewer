@@ -1,0 +1,10 @@
+node_modules/
+dist/
+src/server/generated/
+*.log
+.DS_Store
+
+# Local agent instructions (not published)
+AGENTS.md
+CLAUDE.md
+CODEBASE-MAP.md
