@@ -4,7 +4,7 @@ See a hierarchy of what a project does, mapped by the AI CLI you already use ([C
 
 Everything runs on your computer. Vibe Code Viewer has no accounts and no servers of its own. It asks your own Claude Code or Codex to read the project, using your existing sign-in, and shows the result in your browser.
 
-> **Status:** early. The app starts and finds your AI CLI. Mapping projects comes next.
+> **Status:** early. Pick a project folder and your AI CLI maps it into a tree you can click through. The map is saved in the project's `.vc-viewer/` folder, and you can refresh all of it or any part of it when the code changes.
 
 ## Before you start
 

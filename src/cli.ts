@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { parseArgs } from "node:util";
 import pkg from "../package.json" with { type: "json" };
 import { detectAgents, withCommonBinDirs } from "./server/agents.ts";
@@ -5,6 +6,7 @@ import { createApp } from "./server/app.ts";
 import { webAssets } from "./server/generated/web-assets.ts";
 import { findRunningInstance, listen } from "./server/instance.ts";
 import { openBrowser } from "./server/open-browser.ts";
+import { RECENT_FILE } from "./server/recent-projects.ts";
 
 const DEFAULT_PORT = 4747;
 
@@ -54,7 +56,12 @@ if (running) {
 }
 
 process.env.PATH = withCommonBinDirs(process.env.PATH ?? "");
-const app = createApp({ version: pkg.version, assets: webAssets, detectAgents });
+const app = createApp({
+  version: pkg.version,
+  assets: webAssets,
+  detectAgents,
+  recentFile: RECENT_FILE,
+});
 
 let started: Awaited<ReturnType<typeof listen>>;
 try {

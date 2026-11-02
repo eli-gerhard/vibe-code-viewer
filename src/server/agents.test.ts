@@ -1,6 +1,6 @@
 import { delimiter } from "node:path";
 import { describe, expect, it } from "vitest";
-import { detectAgent, parseVersion, withCommonBinDirs } from "./agents.ts";
+import { AGENTS, detectAgent, parseVersion, withCommonBinDirs } from "./agents.ts";
 
 describe("agent detection", () => {
   it("parses versions from each CLI's --version output", () => {
@@ -10,12 +10,7 @@ describe("agent detection", () => {
   });
 
   it("reports a CLI that isn't on PATH as not installed", async () => {
-    const status = await detectAgent({
-      id: "claude",
-      name: "Missing CLI",
-      command: "vibe-code-viewer-missing-cli",
-      installUrl: "https://example.com",
-    });
+    const status = await detectAgent({ ...AGENTS[0], command: "vibe-code-viewer-missing-cli" });
     expect(status).toMatchObject({ installed: false });
   });
 

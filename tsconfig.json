@@ -9,7 +9,9 @@
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node"],
+    // Mirrors the UI's `@/` alias (src/web/tsconfig.json) so the shadcn CLI can resolve it.
+    "paths": { "@/*": ["./src/web/*"] }
   },
   "include": ["src", "scripts", "*.config.ts"],
   "exclude": ["src/web"]
